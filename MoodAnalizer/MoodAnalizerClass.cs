@@ -1,4 +1,6 @@
-﻿namespace MoodAnalizer
+﻿using System;
+
+namespace MoodAnalizer
 {
     public class MoodAnalizerClass
     {
@@ -9,11 +11,17 @@
         }
         public string AnalizeMood()
         {
-            if (message.Contains("Sad"))
-                return "Sad";
-            else
-                return "Sad";
-
+            try
+            {
+                if (message.Contains("Sad"))
+                    return "Sad";
+                else
+                    return "Happy";
+            }
+            catch(NullReferenceException)
+            {
+                return "Happy";
+            }
         }
     }
 }
