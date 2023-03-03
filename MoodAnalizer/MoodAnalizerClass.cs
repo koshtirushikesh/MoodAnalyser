@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MoodAnalizer
+﻿namespace MoodAnalizer
 {
     public class MoodAnalizerClass
     {
-        public string AnalizeMood(string message)
+        string message;
+        public MoodAnalizerClass(string message)
         {
-            if(message.Contains("Sad"))
+            this.message = message;
+        }
+        public string AnalizeMood()
+        {
+            if (message.Contains("Sad"))
                 return "Sad";
             else
-                return "Happy";
-            
+                return "Sad";
+
         }
     }
 }
