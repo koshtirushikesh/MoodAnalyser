@@ -1,4 +1,5 @@
 ﻿using System;
+using static MoodAnalizer.MoodAnlyseException;
 
 namespace MoodAnalizer
 {
@@ -18,9 +19,9 @@ namespace MoodAnalizer
                 else
                     return "Happy";
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
-                return "Happy";
+                throw new MoodAnlyseException(MoodAnlyseExceptionType.NullMood, "Please do not Enter the Null Input");
             }
         }
     }
