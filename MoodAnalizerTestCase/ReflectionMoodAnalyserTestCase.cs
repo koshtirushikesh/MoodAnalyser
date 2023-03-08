@@ -24,5 +24,20 @@ namespace MoodAnalizerTestCase
                 Console.WriteLine(ex.Message);
             }
         }
+
+        [Test]
+        public void GivenImproperClassName_Should_ThrowMoodAnalysisException()
+        {
+            try
+            {
+                object expected = new MoodAnalizerClass(null);
+                object actual = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalizer.MoodAnalizerClas", "MoodAnalizerClas"); ;
+            }
+            catch (MoodAnlyseException ex)
+            {
+                Assert.AreEqual("Class not Found", ex.Message);
+            }
+
+        }
     }
 }

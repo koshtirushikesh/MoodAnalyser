@@ -30,6 +30,5 @@ namespace MoodAnalizer
                 throw new MoodAnlyseException(MoodAnlyseExceptionType.NullMood, "Please do not Enter the Null Input");
             }
         }
-        
     }
 }
