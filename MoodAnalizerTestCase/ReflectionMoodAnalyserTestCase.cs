@@ -37,7 +37,6 @@ namespace MoodAnalizerTestCase
             {
                 Assert.AreEqual("Class not Found", ex.Message);
             }
-
         }
     }
 }
