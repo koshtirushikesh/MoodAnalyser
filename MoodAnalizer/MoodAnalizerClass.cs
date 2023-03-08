@@ -6,6 +6,10 @@ namespace MoodAnalizer
     public class MoodAnalizerClass
     {
         string message;
+        public MoodAnalizerClass()
+        {
+            message = null;
+        }
         public MoodAnalizerClass(string message)
         {
             this.message = message;
@@ -26,5 +30,6 @@ namespace MoodAnalizer
                 throw new MoodAnlyseException(MoodAnlyseExceptionType.NullMood, "Please do not Enter the Null Input");
             }
         }
+        
     }
 }
