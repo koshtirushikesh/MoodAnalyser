@@ -1,10 +1,4 @@
 ﻿using MoodAnalizer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoodAnalizerTestCase
 {
@@ -19,7 +13,7 @@ namespace MoodAnalizerTestCase
                 object actual = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalizer.MoodAnalizerClass", "MoodAnalizerClass"); ;
                 expected.Equals(actual);
             }
-            catch(MoodAnlyseException ex)
+            catch (MoodAnlyseException ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -51,6 +45,13 @@ namespace MoodAnalizerTestCase
             {
                 Assert.AreEqual("Constructor not found", ex.Message);
             }
+        }
+        [Test]
+        public void GivenProperConstructorNameWithParameter_Should_ReturnObject()
+        {
+            object expected = new MoodAnalizerClass("Happy");
+            object actual = MoodAnalyserFactory.CreateMoodAnalyserWithParameterConstructor("MoodAnalizer.MoodAnalizerClass", "MoodAnalizerClass"); ;
+            expected.Equals(actual);
         }
     }
 }
