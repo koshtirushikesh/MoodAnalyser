@@ -25,7 +25,7 @@ namespace MoodAnalizerTestCase
             try
             {
                 object expected = new MoodAnalizerClass(null);
-                object actual = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalizer.MoodAnalizerClas", "MoodAnalizerClas"); ;
+                object actual = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalizer.MoodAnalizerClass", "MoodAnalizerClass1"); ;
             }
             catch (MoodAnlyseException ex)
             {
@@ -39,7 +39,7 @@ namespace MoodAnalizerTestCase
             try
             {
                 object expected = new MoodAnalizerClass(null);
-                object actual = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalizer.MoodAnalizerClass", "MoodAnalizerClas"); ;
+                object actual = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalizer.MoodAnalizerClass1", "MoodAnalizerClass1"); ;
             }
             catch (MoodAnlyseException ex)
             {
@@ -52,6 +52,20 @@ namespace MoodAnalizerTestCase
             object expected = new MoodAnalizerClass("Happy");
             object actual = MoodAnalyserFactory.CreateMoodAnalyserWithParameterConstructor("MoodAnalizer.MoodAnalizerClass", "MoodAnalizerClass"); ;
             expected.Equals(actual);
+        }
+
+        [Test]
+        public void GivenImproperClassNameWithParameterConstructor_Should_ThrowMoodAnalysisExceptionOfNoSuchClass()
+        {
+            try
+            {
+                object expected = new MoodAnalizerClass(null);
+                object actual = MoodAnalyserFactory.CreateMoodAnalyserWithParameterConstructor("MoodAnalizer.MoodAnalizerClass1", "MoodAnalizerClass"); ;
+            }
+            catch (MoodAnlyseException ex)
+            {
+                Assert.AreEqual("Class not Found", ex.Message);
+            }
         }
     }
 }
