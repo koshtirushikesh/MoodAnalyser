@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
@@ -20,6 +21,29 @@ namespace MoodAnalizer
                     return Activator.CreateInstance(moodAnalyserType);
                 }
                 catch (ArgumentNullException)
+                {
+                    throw new MoodAnlyseException(MoodAnlyseException.MoodAnlyseExceptionType.NO_SUCH_CLASS, "Class not Found");
+                }
+            }
+            else
+            {
+                throw new MoodAnlyseException(MoodAnlyseException.MoodAnlyseExceptionType.NO_SUCH_METHOD, "Constructor not found");
+            }
+        }
+
+        public static object CreateMoodAnalyserWithParameterConstructor(string NameSapceAndclassName, string constructorName)
+        {
+            Type type = typeof(MoodAnalizerClass);
+
+            if (type.Name.Equals(NameSapceAndclassName) || type.FullName.Equals(NameSapceAndclassName))
+            {
+                if(type.Name.Equals(constructorName))
+                {
+                    ConstructorInfo ctor = type.GetConstructor(new[] {typeof(string)} );
+                    object instance = ctor.Invoke(new object[] {"happy"});
+                    return instance;
+                }
+                else 
                 {
                     throw new MoodAnlyseException(MoodAnlyseException.MoodAnlyseExceptionType.NO_SUCH_CLASS, "Class not Found");
                 }
